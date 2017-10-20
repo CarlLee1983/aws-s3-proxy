@@ -66,6 +66,24 @@ proxy_cache_path  /var/nginx/cache/aws  levels=2:2:2 use_temp_path=off keys_zone
  
 [http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path)
 
+#### 相關說明
+
+```
+proxy_cache_path  /var/nginx/cache/aws  levels=1:2 use_temp_path=off keys_zone=aws:1024m inactive=30d max_size=100g;
+```
+
+**/var/nginx/cache/aws** : 本地路徑，快取文件存放位置；
+
+**levels** : 預設所有快取文件都放在同一个/path/to/cache下，從而影響快取的效能，大部分使用2级目錄來暫存文件；
+
+**key_zone** : 在共享快取中設置存取區域來存放快取的 `key`和 `metadata`（類似使用次数），這樣 `nginx` 可以快速判斷一个 `Request` 是否符合快取，1m 可以儲存 8000 個 key，10m 可以儲存 80000 個 key；
+
+**max_size** : 最大 cache 空間，如果不指定，預設為無限大（直到空間用盡），如果滿了會删除最少使用的 cache 文件；
+
+**inactive** : 久未被請求的文件在快取中保留時間，預設10分钟；需要注意的是，inactive 和 expired 配置项的含义是不同的，expired 只是快取過期，但不会被删除，inactive 是删除久未被請求的文件；
+
+**use_temp_path** :  如果為off，則 nginx 會將快取文件直接寫入指定的 cache 文件中，而不是使用 temp_path 存儲，official 建議為 off，避免檔案在不同文件系统中不必要的複製；
+
 ## 架構與服務說明
 
 本代理服務，透過 `nginx` Proxy Pass 功能代理與快取 AWS S3 檔案，提供 `Resize` 功能。

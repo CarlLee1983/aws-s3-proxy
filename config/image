@@ -1,4 +1,4 @@
-proxy_cache_path  /var/nginx/cache/aws  levels=2:2:2 use_temp_path=off keys_zone=aws:2048m inactive=30d max_size=100g;
+proxy_cache_path  /var/nginx/cache/aws  levels=1:2 use_temp_path=off keys_zone=aws:1024m inactive=30d max_size=100g;
 
 server {
   listen 80;

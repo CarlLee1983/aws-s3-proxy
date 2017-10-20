@@ -62,11 +62,9 @@ proxy_cache_path  /var/nginx/cache/aws  levels=2:2:2 use_temp_path=off keys_zone
 
 ### 關於快取空間設定
 
-```
-keys_zone=aws:<cache size>
-```
-
-`cache size` 可自行設定，預設為 2048m，可依需求修改之。
+參考 `nginx` 設定說明：
+ 
+[http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path)
 
 ## 架構與服務說明
 

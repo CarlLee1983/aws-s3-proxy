@@ -72,6 +72,10 @@ keys_zone=aws:<cache size>
 
 本代理服務，透過 `nginx` Proxy Pass 功能代理與快取 AWS S3 檔案，提供 `Resize` 功能。
 
+Client 可以透過代理服務取得 S3 的檔案，而代理伺服同時會將此檔案暫存快取，當 Client 再次請求相同的檔案，Nginx Cache 的機制會從快取中取得並回傳，進而節省對 S3 的請求流量，如果 Cliet 是以 Resize 的方式是請求，Resize 的服務則是向 Nginx Proxy 請求，而不是直接向 S3，主要也是透過希望透過快取方式來進行。
+
+![S3-Proxy](file/S3-Proxy.jpg)
+
 ### 代理服務
 
 原 AWS S3 Url：

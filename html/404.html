@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Page Not Found!</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        color: #999;
+        display: table;
+        font-weight: 200;
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      }
+      a {
+        color: {{ $color or '#f6aa00' }};
+        border-color: {{ $color or '#f6aa00' }};
+        transition: color .3s;
+        -webkit-transition: color .3s;
+        -moz-transition: color .3s;
+        -o-transition: color .3s;
+      }
+      .container {
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .content {
+        padding: 2em 0;
+        text-align: center;
+        display: inline-block;
+      }
+      .content p {
+        padding: 0;
+        margin: 0;
+        line-height: 2em;
+      }
+      .title {
+        font-size: 72px;
+        font-weight: 200;
+        color: @yield('color');
+        margin-bottom: 40px;
+      }
+      .title svg {
+        vertical-align: bottom;
+        margin-left: -.75em;
+      }
+      .path1,
+      .polyline1,
+      .circle1 {
+        stroke: {{ $color or '#f6aa00' }};
+      }
+      .title span {
+        display: block;
+        font-size: .45em;
+        color: #2f2e2b;
+      }
+      .back-link {
+        display: inline-block;
+        line-height: 2em;
+        padding: 0 1em;
+        margin: 2em 0 0;
+        text-decoration: none;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+      }
+      .footer {
+        padding-top: .5em;
+        border-top: 1px solid #eee;
+        font-size: .8125em;
+      }
+      .footer a {
+        line-height: 1.75em;
+        text-decoration: none;
+      }
+      .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+      }
+      @-webkit-keyframes shake {
+        from, to {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        10%, 30%, 50%, 70%, 90% {
+          -webkit-transform: translate3d(-10px, 0, 0);
+          transform: translate3d(-10px, 0, 0);
+        }
+        20%, 40%, 60%, 80% {
+          -webkit-transform: translate3d(10px, 0, 0);
+          transform: translate3d(10px, 0, 0);
+        }
+      }
+      @keyframes shake {
+        from, to {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+        10%, 30%, 50%, 70%, 90% {
+          -webkit-transform: translate3d(-10px, 0, 0);
+          transform: translate3d(-10px, 0, 0);
+        }
+        20%, 40%, 60%, 80% {
+          -webkit-transform: translate3d(10px, 0, 0);
+          transform: translate3d(10px, 0, 0);
+        }
+      }
+      .shake {
+        -webkit-animation-name: shake;
+        animation-name: shake;
+      }
+      @media screen and (max-width: 600px) {
+        .title {
+          font-size: 1.975em;
+        }
+        .title svg {
+          display: block;
+          margin: auto auto .5em;
+        }
+        .footer {
+          font-size: .75em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <h1 class="title animated shake">
+        <svg id="sp-o" data-name="layer1" xmlns="http://www.w3.org/2000/svg" width="92" height="92" viewBox="0 0 92 92">
+          <defs>
+            <style>
+              .path1,
+              .polyline1,
+              .circle1{fill:none;stroke-width:3px;}
+              .path1,
+              .circle1{stroke-miterlimit:10;}
+              .path1,
+              .polyline1{stroke-linecap:round;}
+              .polyline1{stroke-linejoin:round;}
+            </style>
+          </defs>
+          <title>sp-o2</title>
+          <circle class="circle1" cx="46" cy="46" r="45"/>
+          <polyline class="polyline1" points="68.32 48.55 51.84 34.96 68.32 22.81"/>
+          <polyline class="polyline1" points="24.16 22.81 40.64 34.96 24.16 48.55"/>
+          <path class="path1" d="M59,65.44v2.9c0,6.47-4,11.77-9,11.77h0c-4.93,0-9-5.3-9-11.77v-2.9" transform="translate(-4 -4)"/>
+          <line class="path1" x1="27" y1="61.44" x2="65" y2="61.44"/>
+        </svg>
+        頁面找不到 <span>Page Not Found!</span></h1>
+        <p>真失禮！ 這個頁面找不到或被移除了</p>
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; <a href="https://www.iyp.com.tw/" target="_blank" title="中華黃頁 SuperhiPage">中華黃頁 SuperhiPage</a> All rights reserved</p>
+      </footer>
+    </div>
+  </body>
+</html>

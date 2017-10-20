@@ -1,0 +1,66 @@
+proxy_cache_path  /var/nginx/cache/aws  levels=2:2:2 use_temp_path=off keys_zone=aws:2048m inactive=30d max_size=100g;
+
+server {
+  listen 80;
+  server_name image.dshop.dev;
+  root /var/www/html;
+
+  resolver 8.8.8.8 valid=300s;
+  resolver_timeout 10s;
+
+  error_page 404 415 = @404;
+  error_page 500 = @500;
+
+  location / { 
+    set $backent 's3-ap-northeast-1.amazonaws.com';
+
+    # proxy cache
+    proxy_cache aws;
+    proxy_cache_valid any 1m;
+    proxy_cache_valid 200 302 30d;
+    proxy_cache_bypass $http_cache_purge;
+    proxy_cache_lock on;
+    proxy_buffer_size 128k;
+    proxy_buffers 200 128k;
+
+    add_header X-Cached $upstream_cache_status;
+
+    ## Clean up the headers going to and from S3.
+    proxy_set_header Host $backent;
+    proxy_set_header Authorization '';
+    proxy_hide_header x-amz-id-2;
+    proxy_hide_header x-amz-request-id;
+    proxy_hide_header x-amz-storage-class;
+    proxy_hide_header Set-Cookie;
+    proxy_ignore_headers Set-Cookie;
+
+    proxy_intercept_errors on;
+    proxy_pass https://$backent;
+  }
+
+  location ~ ^/resize/(\d+)x(\d+)/(.*) { 
+    set $server 'image.dshop.dev';
+
+    image_filter resize $1 $2;
+    image_filter_jpeg_quality 75;
+    image_filter_buffer 20M;
+    image_filter_interlace on;
+
+    proxy_set_header Host $server;
+
+    proxy_intercept_errors on;
+    proxy_pass http://$server/$3;
+  }
+
+  location @404 {
+    internal;
+    rewrite ^ /404.html;
+    break;
+  }
+
+  location @500 {
+    internal;
+    rewrite ^ /500.html;
+    break;
+  }
+}

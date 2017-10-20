@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Be right back.</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        color: #999;
+        display: table;
+        font-weight: 200;
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      }
+      a {
+        color: {{ $color or '#f6aa00' }};
+        border-color: {{ $color or '#f6aa00' }};
+        transition: color .3s;
+        -webkit-transition: color .3s;
+        -moz-transition: color .3s;
+        -o-transition: color .3s;
+      }
+      .container {
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .content {
+        padding: 2em 0;
+        text-align: center;
+        display: inline-block;
+      }
+      .content p {
+        padding: 0;
+        margin: 0;
+        line-height: 2em;
+      }
+      .title {
+        font-size: 72px;
+        font-weight: 200;
+        color: {{ $color or '#f6aa00' }};
+        margin-bottom: 40px;
+      }
+      .title svg {
+        color: {{ $color or '#f6aa00' }};
+        vertical-align: bottom;
+        margin-left: -.75em;
+      }
+      .path2,
+      .path1 {
+        stroke: {{ $color or '#f6aa00' }};
+      }
+      .title span {
+        display: block;
+        font-size: .45em;
+        color: #2f2e2b;
+      }
+      .back-link {
+        display: inline-block;
+        line-height: 2em;
+        padding: 0 1em;
+        margin: 2em 0 0;
+        text-decoration: none;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+      }
+      .footer {
+        padding-top: .5em;
+        border-top: 1px solid #eee;
+        font-size: .8125em;
+      }
+      .footer a {
+        line-height: 1.75em;
+        text-decoration: none;
+      }
+      .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+      }
+      @-webkit-keyframes bounceInLeft {
+        from, 60%, 75%, 90%, to {
+          -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+          animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+        0% {
+          opacity: 0;
+          -webkit-transform: translate3d(-3000px, 0, 0);
+          transform: translate3d(-3000px, 0, 0);
+        }
+        60% {
+          opacity: 1;
+          -webkit-transform: translate3d(25px, 0, 0);
+          transform: translate3d(25px, 0, 0);
+        }
+        75% {
+          -webkit-transform: translate3d(-10px, 0, 0);
+          transform: translate3d(-10px, 0, 0);
+        }
+        90% {
+          -webkit-transform: translate3d(5px, 0, 0);
+          transform: translate3d(5px, 0, 0);
+        }
+        to {
+          -webkit-transform: none;
+          transform: none;
+        }
+      }
+      @keyframes bounceInLeft {
+        from, 60%, 75%, 90%, to {
+          -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+          animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+        0% {
+          opacity: 0;
+          -webkit-transform: translate3d(-3000px, 0, 0);
+          transform: translate3d(-3000px, 0, 0);
+        }
+        60% {
+          opacity: 1;
+          -webkit-transform: translate3d(25px, 0, 0);
+          transform: translate3d(25px, 0, 0);
+        }
+        75% {
+          -webkit-transform: translate3d(-10px, 0, 0);
+          transform: translate3d(-10px, 0, 0);
+        }
+        90% {
+          -webkit-transform: translate3d(5px, 0, 0);
+          transform: translate3d(5px, 0, 0);
+        }
+        to {
+          -webkit-transform: none;
+          transform: none;
+        }
+      }
+      .bounceInLeft {
+        -webkit-animation-name: bounceInLeft;
+        animation-name: bounceInLeft;
+      }
+      @media screen and (max-width: 600px) {
+        .title {
+          font-size: 1.975em;
+        }
+        .title svg {
+          display: block;
+          margin: auto auto .5em;
+        }
+        .footer {
+          font-size: .75em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <h1 class="title animated bounceInLeft">
+        <svg id="rock-o" data-name="layer1" xmlns="http://www.w3.org/2000/svg" width="92.63" height="92.6" viewBox="0 0 92.63 92.6">
+          <defs>
+            <style>
+              .path2,
+              .path1{fill:none;stroke-width:3px;}
+              .path1{stroke-miterlimit:5;}
+              .path2{stroke-miterlimit:10;}
+            </style>
+          </defs>
+          <title>rock-o2</title>
+          <path class="path1" d="M88.61,5.77c1.27,0,2.3,0,3.34,0a1.87,1.87,0,0,1,2.05,2c-.06,8.87-1.28,17.5-5.11,25.62A57.36,57.36,0,0,1,77.69,49.33c-3.86,3.91-8,7.53-12.07,11.25a2.06,2.06,0,0,0-.78,1.56c-.32,6.65-.69,13.29-1,19.94A2.31,2.31,0,0,1,62.42,84L44.8,94.27c-1,.57-1.94,1.14-2.91,1.7a1.92,1.92,0,0,1-2.65-.31c-1-1-2-2.06-3.09-3.07A2.28,2.28,0,0,1,35.59,90c1.46-4.65,2.88-9.32,4.33-14a1.17,1.17,0,0,0-.31-1.39Q32.32,67.42,25.1,60.14a1.12,1.12,0,0,0-1.32-.31c-4.62,1.44-9.26,2.83-13.87,4.31A2.53,2.53,0,0,1,7,63.41c-.9-1-1.88-1.88-2.81-2.84a1.85,1.85,0,0,1-.35-2.69q6-10.27,12-20.54a2.62,2.62,0,0,1,2.37-1.4q9.93-.48,19.85-1.05a1.57,1.57,0,0,0,.95-.51c2.86-3.15,5.6-6.43,8.57-9.48,5.87-6,12.26-11.41,20-14.89A46.11,46.11,0,0,1,80.79,6.5C83.46,6.17,86.15,6,88.61,5.77Z" transform="translate(-2.37 -4.76)"/>
+          <path class="path2" d="M81.58,23.57a5.33,5.33,0,1,0-5.33,5.29A5.33,5.33,0,0,0,81.58,23.57Z" transform="translate(-2.37 -4.76)"/>
+        </svg>
+        Opps.<span>Something Error.</span></h1>
+        <p>a server error occurred</p>
+      </div>
+      <footer class="footer">
+        <p>Copyright &copy; <a href="https://www.iyp.com.tw/" target="_blank" title="中華黃頁 SuperhiPage">中華黃頁 SuperhiPage</a> All rights reserved</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -8,18 +8,15 @@ server {
   # 假設主網域為 yep.com.tw
   server_name images.yep.com.tw;
   
-  # 預設首頁導向
-  location / {
-    proxy_pass http://www.yep.com.tw/;
-  }
-
   # 圖片代理伺服器導向
   location ~ .(png|gif|ico|jpg|jpeg)$ {
-    # 假設容器對應 Port 是 8080
-    proxy_pass http://127.0.0.1:8080/;
+    proxy_pass http://127.0.0.1:8080;
   }
 
-  
+  # 預設首頁導向
+  location / {
+    proxy_pass https://www.yep.com.tw;
+  }
 }
 ```
 

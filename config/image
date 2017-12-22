@@ -2,7 +2,6 @@ proxy_cache_path  /var/nginx/cache/aws  levels=1:2 use_temp_path=off keys_zone=a
 
 server {
   listen 80;
-  server_name image.dshop.dev;
   root /var/www/html;
 
   resolver 8.8.8.8 valid=300s;
@@ -11,7 +10,7 @@ server {
   error_page 404 415 = @404;
   error_page 500 = @500;
 
-  location / { 
+  location / {
     set $backent 's3-ap-northeast-1.amazonaws.com';
 
     # proxy cache
@@ -38,8 +37,8 @@ server {
     proxy_pass https://$backent;
   }
 
-  location ~ ^/resize/(\d+)x(\d+)/(.*) { 
-    set $server 'image.dshop.dev';
+  location ~ ^/resize/(\d+)x(\d+)/(.*) {
+    set $server '127.0.0.1';
 
     image_filter resize $1 $2;
     image_filter_jpeg_quality 75;

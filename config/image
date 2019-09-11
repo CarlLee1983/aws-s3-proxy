@@ -51,6 +51,33 @@ server {
     proxy_pass http://$server/$3;
   }
 
+  location ~ ^/crop/(\d+)x(\d+)/(.*) {
+    set $server '127.0.0.1';
+    image_filter crop $1 $2;
+    image_filter_jpeg_quality 75;
+    image_filter_buffer 20M;
+    image_filter_interlace on;
+
+    proxy_set_header Host $server;
+
+    proxy_intercept_errors on;
+    proxy_pass http://$server/$3;
+  }
+
+  location ~ ^/rotate/(90|180|270)/(.*) {
+    set $server '127.0.0.1';
+
+    image_filter rotate $1;
+    image_filter_jpeg_quality 75;
+    image_filter_buffer 20M;
+    image_filter_interlace on;
+
+    proxy_set_header Host $server;
+
+    proxy_intercept_errors on;
+    proxy_pass http://$server/$2;
+  }
+
   location @404 {
     internal;
     rewrite ^ /404.html;

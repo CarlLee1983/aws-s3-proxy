@@ -136,4 +136,10 @@ Client 可以透過代理服務取得 S3 的檔案，而代理伺服同時會將
 <Protocol>://<Proxy Host>:<Port>/resize/<width>x<height>/<bucket>/85f38ab0-818f-11e7-a734-934facaaf741.jpeg
 ```
 
+### Crop 功能
 
+設定寬度與高度，`nginx` 會透過參數進行縮放處理。
+
+```
+<Protocol>://<Proxy Host>:<Port>/crop/<width>x<height>/<bucket>/85a380b0-818f-11e7-b747-934facaaf741.jpeg
+```
